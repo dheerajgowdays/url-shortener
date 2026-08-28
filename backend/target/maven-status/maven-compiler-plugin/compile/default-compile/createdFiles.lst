@@ -2,4 +2,7 @@ com/dheeraj/urlshortener/dto/CreateUrlRequest.class
 com/dheeraj/urlshortener/dto/CreateUrlResponse.class
 com/dheeraj/urlshortener/UrlShortenerApplication.class
 com/dheeraj/urlshortener/service/UrlService.class
+com/dheeraj/urlshortener/repository/UrlRepository.class
+com/dheeraj/urlshortener/util/Base62Encoder.class
+com/dheeraj/urlshortener/entity/Url.class
 com/dheeraj/urlshortener/controller/HealthController.class

@@ -2,4 +2,7 @@
 /home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/controller/HealthController.java
 /home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/dto/CreateUrlRequest.java
 /home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/dto/CreateUrlResponse.java
+/home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/entity/Url.java
+/home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/repository/UrlRepository.java
 /home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/service/UrlService.java
+/home/dheeraj/Projects/url-shortener/backend/src/main/java/com/dheeraj/urlshortener/util/Base62Encoder.java

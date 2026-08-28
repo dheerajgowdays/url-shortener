@@ -23,7 +23,8 @@ public class HealthController{
 	public HealthController(UrlService urlService){
 		this.urlService = urlService;
 	}
-	@GetMapping("/api/v1/health")
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	public String health(){
 		return urlService.getStatus();
 	}
