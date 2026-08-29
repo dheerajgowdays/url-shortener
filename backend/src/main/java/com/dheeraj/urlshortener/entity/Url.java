@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,7 +25,15 @@ import jakarta.persistence.Table;
 public class Url{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "url_id_generator"
+        )
+    @SequenceGenerator(
+         name = "url_id_generator",
+         sequenceName = "url_id_sequence",
+         allocationSize = 1
+        )
     private Long id;
     @Column(
         name = "short_code",
