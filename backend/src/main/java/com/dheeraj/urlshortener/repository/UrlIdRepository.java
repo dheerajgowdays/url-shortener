@@ -1,11 +1,9 @@
 package com.dheeraj.urlshortener.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
-@Repository
-public interface UrlIdRepository extends JpaRepository<Object, Long> {
+public interface UrlIdRepository extends Repository<Object, Long> {
 
     @Query(value = "SELECT nextval('url_id_sequence')", nativeQuery = true)
     Long nextId();
