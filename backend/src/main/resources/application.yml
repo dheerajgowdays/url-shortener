@@ -17,4 +17,3 @@ spring:
     properites:
       hiberante:
         formate_sql: true
-
