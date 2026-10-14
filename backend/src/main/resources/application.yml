@@ -3,17 +3,17 @@ spring:
     name: url-shortener
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/url_shortener
+    url: jdbc:postgresql://localhost:5433/url_shortener
     username: url_shortener
     password: url_shortener_dev
 
+  flyway:
+    enabled: true
+
   jpa:
     hibernate:
-      ddl-auto: update
-
-
+      ddl-auto: validate
     open-in-view: false
-
     properites:
-      hiberante:
-        formate_sql: true
+      hibernate:
+        format_sql: true

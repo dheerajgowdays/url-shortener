@@ -2,12 +2,13 @@
                             │    PLANS     │
                             │──────────────│
                             │ id PK        │
-                            │ name UNIQUE  │
+                            │ name UNIQUE  |
+                            | created_at   │
                             └──────┬───────┘
                                    │ 1:N
                                    ▼
-                         ┌──────────────┐
-                          │    USERS     │
+                            ┌──────────────┐
+                            │    USERS     │
                             │──────────────│
                             │ id PK        │
                             │ email UNIQUE │
@@ -88,3 +89,5 @@ A dedicated registry preserves historical short codes even
 after the corresponding link is physically deleted.
 This guarantees that a previously issued short code can
 never be assigned to another link.
+
+ 

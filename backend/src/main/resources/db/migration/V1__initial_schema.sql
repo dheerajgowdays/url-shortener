@@ -36,7 +36,7 @@ CREATE TABLE links(
     id UUID PRIMARY KEY,
     user_id UUID NULL REFERENCES users(id),
     destination_id UUID NOT NULL REFERENCES destinations(id),
-    short_code VARCHAR(32) NOT NULL UNIQUE,
+    short_code VARCHAR(32) NOT NULL UNIQUE REFERENCES short_code_registry(short_code),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     expires_at TIMESTAMPTZ NULL,
     status VARCHAR(16) NOT NULL CHECK(status IN('ACTIVE','EXPIRED','DISABLED'))
