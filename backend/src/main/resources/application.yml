@@ -9,6 +9,9 @@ spring:
 
   flyway:
     enabled: true
+    default-schema: shortener_v2
+    schemas: shortener_v2
+    create-schemas: true
 
   jpa:
     hibernate:
@@ -17,3 +20,4 @@ spring:
     properites:
       hibernate:
         format_sql: true
+        default_schema: shortener_v2

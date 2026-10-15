@@ -1,4 +1,7 @@
 
+CREATE SCHEMA IF NOT EXISTS shortener_v2;
+SET search_path TO shortener_v2;
+
 -- 1. plans table and seed data --
 CREATE TABLE plans (id UUID PRIMARY KEY, name VARCHAR(32) NOT NULL UNIQUE, created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP );
  
