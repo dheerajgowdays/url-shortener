@@ -1,10 +1,8 @@
 package com.dheeraj.url_shortener.repository;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
