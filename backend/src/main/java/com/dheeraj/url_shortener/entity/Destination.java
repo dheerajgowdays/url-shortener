@@ -1,14 +1,12 @@
 package com.dheeraj.url_shortener.entity;
 
-import java.util.UUID;
-
 import java.time.Instant;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="destinations",schema="shortener_v2")
@@ -23,7 +21,7 @@ public class Destination {
     @Column(name="normalized_url",nullable=false)
     private String normalizedUrl;
 
-    @Column(name="created_at",nullable=false)
+    @Column(name="created_at",nullable=false,insertable = false,updatable = false)
     private Instant createdAt;
 
     public Destination(){}
@@ -42,9 +40,20 @@ public class Destination {
         return normalizedUrl;
     }
 
+    public void setNormalizedUrl(String normalizedUrl){
+        this.normalizedUrl = normalizedUrl;
+    }
+
     public String getOriginalUrl(){
         return originalUrl;
     }
 
+    public void setOriginalUrl(String originalUrl){
+        this.originalUrl = originalUrl;
+    }
+
+    public Instant getCreatedAt(){
+        return createdAt;
+    }
     
 }

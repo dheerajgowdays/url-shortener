@@ -1,16 +1,16 @@
     package com.dheeraj.url_shortener.entity;
 
-    import java.util.UUID;
     import java.time.Instant;
+    import java.util.UUID;
 
-    import jakarta.persistence.FetchType;
-    import jakarta.persistence.JoinColumn;
-    import jakarta.validation.constraints.Email;
-    import jakarta.persistence.ManyToOne;
-    import jakarta.persistence.Entity;
-    import jakarta.persistence.Table;
-    import jakarta.persistence.Id;
     import jakarta.persistence.Column;
+    import jakarta.persistence.Entity;
+    import jakarta.persistence.FetchType;
+    import jakarta.persistence.Id;
+    import jakarta.persistence.JoinColumn;
+    import jakarta.persistence.ManyToOne;
+    import jakarta.persistence.Table;
+    import jakarta.validation.constraints.Email;
     import jakarta.validation.constraints.NotBlank;
 
     @Entity
@@ -61,6 +61,7 @@
         public String getEmail(){
             return email;
         }
+
         public Plan getPlan(){
             return plan;
         }

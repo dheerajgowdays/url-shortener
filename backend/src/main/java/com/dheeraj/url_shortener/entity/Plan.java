@@ -40,6 +40,10 @@ public class Plan {
         return planName;
     }
 
+    public void setPlanName(PlanName planName){
+        this.planName = planName;
+    }
+
     public Instant getCreatedAt(){
         return createdAt;
     }
