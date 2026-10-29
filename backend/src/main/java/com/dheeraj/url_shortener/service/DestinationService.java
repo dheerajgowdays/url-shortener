@@ -18,8 +18,20 @@ public class  DestinationService{
         this.destinationRepository=destinationRepository;
     }
 
-   public Optional<Destination> findExistingDestination(String normalizedUrl){
+   public Optional<Destination> findExistingDestination(String originalUrl){
+
+        String normalizedUrl=normalizeUrl(originalUrl);
         return destinationRepository.findByNormalizedUrl(normalizedUrl);
+   }
+
+   public Destination getOrCreateDestination(String originalUrl){
+        if(originalUrl==null || originalUrl.isBlank()) {
+            throw new IllegalArgumentException("URL cannot be null or blank");
+        }
+        String normalizedUrl = normalizeUrl(originalUrl);
+        if(!findExistingDestination(normalizedUrl)){
+            return new destination(originalUrl,normalizedUrl);
+        return findExistingDestination(normalizedUrl);
    }
     
    private String normalizeUrl(String originalUrl){

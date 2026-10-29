@@ -76,12 +76,33 @@ class UserRepositoryTest {
         
         Plan freePlan = freePlanOptional.get();
 
-        String email = "test-"+UUID.randomUUID()+"@example.com";
+        String email = "Dheeraj.Test@example.com";
         String hashPassword = "$2a$10$wE1VfQ9g.examplePlaceholderHash1234567890";
 
         User user = new User(email, hashPassword, freePlan);
         User userSaved = userRepository.save(user);
 
-        assertThat(userSaved.getEmail())
+        assertThat(userSaved.getId())
+            .as("Saved User Id must be generated")
+            .isNotNull();
+
+        String queryEmail="dheeraj.test@example.com";
+        Optional<User> emailOptional =  userRepository.findByEmailIgnoreCase(queryEmail);
+
+        assertThat(emailOptional)
+                .as("User should be found regardless of case differences")
+                .isPresent();
+        assertThat(emailOptional.get().getId())
+                .as("Returned Id should match with the saved Id")
+                .isEqualTo(userSaved.getId());
+    }
+
+    @Test
+    void shouldReturnEmptyWhenEmailDoesNotExist(){
+        Optional<User> user = userRepository.findByEmailIgnoreCase("Dheeraj@email.com");
+
+        assertThat(user)
+            .as("Quering that non-existing email should return Optional.empty()")
+            .isEmpty();
     }
 }
