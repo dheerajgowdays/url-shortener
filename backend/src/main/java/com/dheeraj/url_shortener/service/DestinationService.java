@@ -1,10 +1,13 @@
 package com.dheeraj.url_shortener.service;
 
 import java.util.Optional;
+import java.util.Locale;
+import java.util.UUID;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dheeraj.url_shortener.entity.Destination;
 import com.dheeraj.url_shortener.repository.DestinationRepository;
@@ -19,19 +22,23 @@ public class  DestinationService{
     }
 
    public Optional<Destination> findExistingDestination(String originalUrl){
-
         String normalizedUrl=normalizeUrl(originalUrl);
         return destinationRepository.findByNormalizedUrl(normalizedUrl);
    }
 
+    @Transactional
    public Destination getOrCreateDestination(String originalUrl){
         if(originalUrl==null || originalUrl.isBlank()) {
             throw new IllegalArgumentException("URL cannot be null or blank");
         }
-        String normalizedUrl = normalizeUrl(originalUrl);
-        if(!findExistingDestination(normalizedUrl)){
-            return new destination(originalUrl,normalizedUrl);
-        return findExistingDestination(normalizedUrl);
+       String normalizedUrl=normalizeUrl(originalUrl);
+
+        destinationRepository.insertIfNotExists(UUID.randomUUID(),originalUrl.trim(),normalizedUrl);
+
+        return destinationRepository.findByNormalizedUrl(normalizedUrl)
+                .orElseThrow(()-> new IllegalStateException(
+                        "Failed to retrieve destination for normalized URL: "+ normalizedUrl
+                ));
    }
     
    private String normalizeUrl(String originalUrl){
@@ -51,7 +58,7 @@ public class  DestinationService{
             throw new IllegalArgumentException("URL must contain an explict scheme (e.g., http or https)");
         }
 
-        String lowerScheme = scheme.toLowerCase();
+        String lowerScheme = scheme.toLowerCase(Locale.ROOT);
         if(!"http".equals(lowerScheme) && !"https".equals(lowerScheme)){
             throw new IllegalArgumentException("Unsupported Scheme: '"+scheme+"'. only http and https are allowed");
         }
@@ -61,7 +68,7 @@ public class  DestinationService{
             throw new IllegalArgumentException("URL must conating Valid Host");
         }
 
-        String lowerHost = host.toLowerCase();
+        String lowerHost = host.toLowerCase(Locale.ROOT);
        try {
            URI normalizedUrl = new URI(
                    lowerScheme,
