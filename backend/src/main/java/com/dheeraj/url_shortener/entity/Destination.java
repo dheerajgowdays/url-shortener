@@ -26,8 +26,8 @@ public class Destination {
 
     public Destination(){}
 
-    public Destination(String originalUrl,String normalizedUrl){
-        this.id = UUID.randomUUID();
+    public Destination(UUID id,String originalUrl,String normalizedUrl){
+        this.id = id;
         this.originalUrl = originalUrl;
         this.normalizedUrl = normalizedUrl;
     }
