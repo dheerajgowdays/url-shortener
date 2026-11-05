@@ -2,6 +2,9 @@ package com.dheeraj.url_shortener.generator;
 
 import java.util.Arrays;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Base62Encoder {
 
     private static final String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
