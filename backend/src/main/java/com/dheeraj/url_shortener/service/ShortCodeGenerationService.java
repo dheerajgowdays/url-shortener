@@ -2,7 +2,7 @@ package com.dheeraj.url_shortener.service;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import org.springframework.stereotype.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dheeraj.url_shortener.entity.ShortCodeRegistry;
 import com.dheeraj.url_shortener.generator.ShortCodeGenerator;
