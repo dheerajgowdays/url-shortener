@@ -1,0 +1,4 @@
+ALTER SEQUENCE shortener_v2.short_code_id_seq
+    MINVALUE 1
+    MAXVALUE 3521614606207
+    NO CYCLE;
